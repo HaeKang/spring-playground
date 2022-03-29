@@ -15,10 +15,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class MemberRepositoryTest {
     @Autowired MemberRepository memberRepository;
-    
+
     @Test
     @Transactional
-//    @Rollback(false)
+    @Rollback(false)
     public void testMember () throws Exception{
 
         // given
