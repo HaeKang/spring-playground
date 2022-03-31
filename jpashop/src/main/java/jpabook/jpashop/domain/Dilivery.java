@@ -12,7 +12,7 @@ public class Dilivery {
     @Column(name="delilvery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delilvery")
+    @OneToOne(mappedBy = "dilivery", fetch = FetchType.LAZY)
     private Order order;
 
     @Embedded
