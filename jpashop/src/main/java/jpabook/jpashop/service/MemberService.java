@@ -30,7 +30,7 @@ public class MemberService {
     /*
      * 회원가입
      */
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false)    // 위에 기본이 readOnly=True 이므로 , join은 insert 해야하므로 readOnly=False로 세팅
     public Long join(Member member){
         validateDuplicateMember(member);    // 중복 회원 검증
         memberRepository.save(member);
@@ -39,8 +39,7 @@ public class MemberService {
 
 
     private void validateDuplicateMember(Member member){
-        // Exception
-
+        // Exception ~>
         List<Member> findMembers = memberRepository.findByName(member.getName());
         if (!findMembers.isEmpty()){
             throw new IllegalStateException("이미 존재하는 회원입니다");
@@ -57,4 +56,6 @@ public class MemberService {
     public Member findOne(Long memberId){
         return memberRepository.findOne(memberId);
     }
+
+
 }
