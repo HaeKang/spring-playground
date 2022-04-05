@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.aspectj.weaver.ast.Or;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @Entity
 @Table(name="orders")
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
     @Id
     @GeneratedValue
@@ -68,7 +71,7 @@ public class Order {
         return order;
     }
 
-    // == 비즈니스 로직 ==
+    // == 비즈니스 로직 == ~> 도메인 모델 패턴 (엔티티가 비즈니스 로직을 가지고 객체지향 특성 적극 활용) <-> 트랜잭션 스크립트 패턴 (서비스 계층에서 대부분의 비즈니스 로직 처리)
 
     // 주문취소
     public void cancel(){
