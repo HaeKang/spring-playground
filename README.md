@@ -1,7 +1,7 @@
 # Spring vs Spring Boot
 ![image](https://user-images.githubusercontent.com/41337631/163389315-aa78cdb2-6660-42c0-87e6-227f294c8f98.png)
 
-### Spring (Spring Famework) 
+### Spring (Spring Framework) 
  : Spring represented a fresh start after the “winter” of traditional J2EE  
   #### Dependency Injection(DI) - 의존성 주입  
   DI를 통해 객체간 결합도 낮추어 코드 재사용성 향상  
