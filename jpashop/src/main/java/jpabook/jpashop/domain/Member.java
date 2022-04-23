@@ -22,6 +22,7 @@ public class Member {
     @Embedded
     private Address address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "member") // 1:n
     private List<Order> orders = new ArrayList<>();
 }
