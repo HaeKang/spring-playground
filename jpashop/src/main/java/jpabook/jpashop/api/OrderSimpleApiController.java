@@ -5,6 +5,7 @@ import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.repository.OrderSearch;
+import jpabook.jpashop.repository.SimpleOrderQueryDto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +41,7 @@ public class OrderSimpleApiController {
         return result;
     }
 
-    // fetch join 통해 성능개선
+    // v3 : fetch join 통해 성능개선
     @GetMapping("/api/v3/simple-orders")
     public List<SimpleOrderDto> ordersV3(){
         List<Order> orders = orderRepository.findAllWithMemberDelivery();
@@ -49,6 +50,13 @@ public class OrderSimpleApiController {
                 .collect(Collectors.toList());
         return result;
     }
+
+    // v4 : JPA에서 바로 DTO
+    @GetMapping("/api/v4/simple-orders")
+    public List<SimpleOrderQueryDto> ordersV4(){
+        return orderRepository.findOrderDtos();
+    }
+
 
     @Data
     static class SimpleOrderDto{

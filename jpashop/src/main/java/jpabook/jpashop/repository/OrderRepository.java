@@ -32,6 +32,14 @@ public class OrderRepository {
                                         " join fetch o.dilivery d", Order.class)
                 .getResultList();
     }
+
+    public List<SimpleOrderQueryDto> findOrderDtos(){
+        return em.createQuery("select new jpabook.jpashop.repository.SimpleOrderQueryDto(o.id, m.name, o.orderDate, o.status, d.address)" +
+                                        " from Order o" +
+                                        " join o.member m " +
+                                        " join o.dilivery d ", SimpleOrderQueryDto.class)
+                .getResultList();
+    }
     
     // JPA Criteria 방식 ~> 실무에서 안씀
     public List<Order> findAllByCriteria(OrderSearch orderSearch) {
